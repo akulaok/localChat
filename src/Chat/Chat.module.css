@@ -5,4 +5,11 @@
   background-position: center center;
   background-size: cover;
   display: flex;
+  flex-direction: column;
+}
+
+.ChatContainer {
+  height: calc(100% - 68px);
+  display: flex;
+  flex-direction: column-reverse;
 }

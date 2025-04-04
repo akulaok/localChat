@@ -1,0 +1,43 @@
+.chatInput {
+  width: 100%;
+  border-top: 2px solid #123C69;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 18px 16px;
+  box-sizing: border-box;
+}
+
+.input {
+  height: 100%;
+  width: calc(100% - 70px);
+  background: #EEE2DC;
+  border: none;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.button {
+  background-image: url(./button/send.png);
+  width: 49px;
+  height: 50px;
+  background-size: contain;
+  border: none;
+  background-color: #EEE2DC;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-image: url(./button/send-hover.png);
+  outline: none;
+}
+
+.button:active {
+  background-image: url(./button/send-active.png);
+  transform: scale(0.98);
+}
