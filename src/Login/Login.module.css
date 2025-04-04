@@ -58,7 +58,7 @@
 }
 
 .input:focus {
- outline: none;
+  outline: none;
 }
 
 .button {
@@ -78,10 +78,6 @@
   outline: none;
 }
 
-
-.button:focus {
-  outline: none;
-}
 
 .button:active {
   background: #b83a5f;

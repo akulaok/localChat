@@ -1,0 +1,8 @@
+.main {
+  height: 100vh;
+  background-color: #EEE2DC;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+}

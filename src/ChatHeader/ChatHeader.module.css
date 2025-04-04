@@ -1,0 +1,41 @@
+.header {
+  height: 68px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #123C69;
+  color: #EEE2DC;
+  padding: 16px 24px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.info {
+  display: flex;
+  gap: 40px;
+}
+
+.button {
+  border-radius: 8px;
+  background: #AC3B61;
+  border: none;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  cursor: pointer;
+  height: 100%;
+  width: 100px;
+  color: #EEE2DC;
+}
+
+.button:hover {
+  background: #ce4472;
+  outline: none;
+}
+
+.button:active {
+  background: #b83a5f;
+  transform: scale(0.98);
+}

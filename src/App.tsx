@@ -1,6 +1,8 @@
 import {useEffect, useState} from "react";
 import "./App.css";
 import Login from "./Login/Login";
+import Chat from "./Chat/Chat";
+import {onLogin} from "./utils/auth";
 
 function App() {
   const [username, setUsername] = useState<string | null>(null);
@@ -15,16 +17,15 @@ function App() {
     }
   }, []);
 
-  const onLogin = (username: string, room: string) => {
-    setUsername(username);
-    setRoom(room);
-    localStorage.setItem(
-      "chat-session",
-      JSON.stringify({username: username, room: room})
+  if (!username || !room)
+    return (
+      <Login
+        onLogin={(user, roomName) =>
+          onLogin(user, roomName, setUsername, setRoom)
+        }
+      />
     );
-  };
-
-  return <Login onLogin={onLogin}></Login>;
+  return <Chat username={username} room={room}></Chat>;
 }
 
 export default App;
