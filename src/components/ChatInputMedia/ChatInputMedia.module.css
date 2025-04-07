@@ -1,0 +1,13 @@
+.input {
+  display: none;
+}
+
+.mediaButton {
+  background-image: url(./paperclip.png);
+  height: 26px;
+  width: 28px;
+  background-size: contain;
+  border: none;
+  background-color: #EEE2DC;
+  cursor: pointer;
+}

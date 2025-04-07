@@ -1,0 +1,29 @@
+.quote {
+  max-width: 200px;
+  background: #f1c4d2;
+  padding: 8px 10px;
+  border-left: 4px solid #123C69;
+  border-radius: 8px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.quoteText {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.closeQuote {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+}

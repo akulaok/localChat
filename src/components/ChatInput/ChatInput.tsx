@@ -1,9 +1,11 @@
 import {JSX, useState} from "react";
 import styles from "./ChatInput.module.css";
-import EmojiPickerWrapper from "../EmojiPicker/EmojiPicker";
 import {MessageType} from "../../types/message";
+import ChatInputQuote from "../ChatInputQuote/ChatInputQuote";
+import ChatInputField from "../ChatInputField/ChatInputField";
+import ChatInputMedia from "../ChatInputMedia/ChatInputMedia";
 interface ChatInputProps {
-  onSend: (text: string) => void;
+  onSend: (text: string, mediaFile?: File) => void;
   quotedMessage: MessageType | null;
   clearQuote: () => void;
 }
@@ -14,41 +16,28 @@ function ChatInput({
   clearQuote,
 }: ChatInputProps): JSX.Element {
   const [messageText, setMessageText] = useState("");
+  const [media, setMedia] = useState<File | undefined>(undefined);
 
   const handleSend = () => {
     if (messageText.trim()) {
-      onSend(messageText);
+      onSend(messageText, media);
       setMessageText("");
+      setMedia(undefined);
     }
   };
 
   return (
     <div className={styles.chatInput}>
       {quotedMessage && (
-        <div className={styles.quote}>
-          <span className={styles.quoteText}>
-            <strong>{quotedMessage.user}:</strong> {quotedMessage.text}
-          </span>
-          <button className={styles.closeQuote} onClick={clearQuote}>
-            ✕
-          </button>
-        </div>
+        <ChatInputQuote quotedMessage={quotedMessage} clearQuote={clearQuote} />
       )}
-
-      <input
-        value={messageText}
-        onChange={(e) => setMessageText(e.target.value)}
-        placeholder="Введите сообщение"
-        type="text"
-        className={styles.input}
-        onKeyDown={(e) => e.key === "Enter" && handleSend()}
+      <ChatInputField
+        messageText={messageText}
+        setMessageText={setMessageText}
+        handleSend={handleSend}
       />
-
-      <EmojiPickerWrapper
-        onEmojiClick={(emoji) => setMessageText((prev) => prev + emoji)}
-      />
-
-      <button className={styles.button} onClick={handleSend}></button>
+      <ChatInputMedia setMedia={setMedia} />
+      <button className={styles.sendButton} onClick={handleSend}></button>
     </div>
   );
 }

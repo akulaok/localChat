@@ -10,50 +10,7 @@
   background: #EEE2DC;
 }
 
-.quote {
-  max-width: 200px;
-  background: #f1c4d2;
-  padding: 8px 10px;
-  border-left: 4px solid #123C69;
-  border-radius: 8px;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.quoteText {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.closeQuote {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: 14px;
-  color: #333;
-}
-
-.input {
-  flex: 1;
-  height: 100%;
-  background: #EEE2DC;
-  border: none;
-  box-sizing: border-box;
-  outline: none;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  padding: 0 12px;
-}
-
-.button {
+.sendButton {
   background-image: url(./button/send.png);
   width: 49px;
   height: 50px;
@@ -63,11 +20,11 @@
   cursor: pointer;
 }
 
-.button:hover {
+.sendButton:hover {
   background-image: url(./button/send-hover.png);
 }
 
-.button:active {
+.sendButton:active {
   background-image: url(./button/send-active.png);
   transform: scale(0.98);
 }

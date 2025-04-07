@@ -9,9 +9,9 @@
   z-index: 10;
 }
 
-.button{
+.button {
   height: 29px;
-  width: 30px;
+  width: 29.5px;
   background-image: url(./smiley.png);
   background-size: contain;
   border: none;

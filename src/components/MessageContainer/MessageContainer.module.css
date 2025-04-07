@@ -1,0 +1,14 @@
+.messageContainer {
+  width: 100%;
+  display: flex;
+}
+
+.sentContainer {
+  justify-content: flex-end;
+  color: white;
+}
+
+.receivedContainer {
+  justify-content: flex-start;
+  color: black;
+}

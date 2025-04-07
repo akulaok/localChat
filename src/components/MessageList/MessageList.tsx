@@ -23,7 +23,11 @@ function MessageList({
   return (
     <div className={styles.messagesBox}>
       {messages.map((message) => (
-        <Message onQuote={onQuote } username={username} message={message}></Message>
+        <Message
+          onQuote={onQuote}
+          username={username}
+          message={message}
+        ></Message>
       ))}
       <div ref={messagesEndRef} />
     </div>

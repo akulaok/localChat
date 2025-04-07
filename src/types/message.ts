@@ -5,4 +5,6 @@ export interface MessageType {
   timestamp: string;
   room: string;
   quotedMessage: MessageType | null;
+  mediaUrl?: string;
+  mediaType?: "image" | "video";
 }
