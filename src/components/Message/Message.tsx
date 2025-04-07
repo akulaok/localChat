@@ -1,6 +1,7 @@
 import {JSX} from "react";
 import {MessageType} from "../../types/message";
 import styles from "./Message.module.css";
+import {formatTime} from "../../utils/formatTime";
 
 interface MessageProps {
   username: string;
@@ -21,7 +22,19 @@ function Message({username, message}: MessageProps): JSX.Element {
           isOwnMessage ? styles.sentMessage : styles.receivedMessage
         }`}
       >
-        {message.text}
+        <div className={styles.text}>{message.text}</div>
+        <div className={styles.footer}>
+          {!isOwnMessage && (
+            <span className={styles.username}>{message.user}</span>
+          )}
+          <span
+            className={`${
+              isOwnMessage ? styles.sentTimestamp : styles.receivedTimestamp
+            }`}
+          >
+            {formatTime(message.timestamp)}
+          </span>
+        </div>
       </div>
     </div>
   );

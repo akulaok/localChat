@@ -33,3 +33,25 @@
   color: black;
   border-bottom-left-radius: 4px;
 }
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 8px;
+}
+
+.username {
+  font-weight: bold;
+  color: #123c69;
+}
+
+
+.sentTimestamp {
+  color: #f3b8cb;
+}
+
+.receivedTimestamp {
+  color: #8d2a4c;
+  margin-left: 10px;
+}

@@ -1,9 +1,10 @@
-import {JSX, useEffect, useState} from "react";
+import {JSX} from "react";
 import styles from "./Chat.module.css";
 import ChatHeader from "../ChatHeader/ChatHeader";
 import {MessageType} from "../../types/message";
 import MessageList from "../MessageList/MessageList";
 import ChatInput from "../ChatInput/ChatInput";
+import {useMessages} from "../../hooks/useMessages";
 
 interface ChatProps {
   username: string;
@@ -11,25 +12,7 @@ interface ChatProps {
 }
 
 function Chat({username, room}: ChatProps): JSX.Element {
-  const savedMessages = localStorage.getItem(`chat:${room}`);
-  const [messages, setMessages] = useState<MessageType[]>(
-    savedMessages ? JSON.parse(savedMessages) : []
-  );
-
-  useEffect(() => {
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === `chat:${room}` && e.newValue) {
-        setMessages(JSON.parse(e.newValue));
-      }
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
-  }, [room]);
-
-  useEffect(() => {
-    localStorage.setItem(`chat:${room}`, JSON.stringify(messages));
-  }, [messages, room]);
+  const {messages, setMessages} = useMessages(room);
 
   const addMessage = (text: string) => {
     const newMsg: MessageType = {
