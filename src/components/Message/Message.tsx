@@ -2,35 +2,57 @@ import {JSX} from "react";
 import {MessageType} from "../../types/message";
 import styles from "./Message.module.css";
 import {formatTime} from "../../utils/formatTime";
+import clsx from "clsx";
 
 interface MessageProps {
   username: string;
   message: MessageType;
+  onQuote: React.Dispatch<React.SetStateAction<MessageType | null>>;
 }
 
-function Message({username, message}: MessageProps): JSX.Element {
-  const isOwnMessage = username === message.user;
+function Message({username, message, onQuote}: MessageProps): JSX.Element {
+  const isOwn = username === message.user;
 
   return (
     <div
-      className={`${styles.messageContainer} ${
-        isOwnMessage ? styles.sentContainer : styles.receivedContainer
-      }`}
+      className={clsx(styles.messageContainer, {
+        [styles.sentContainer]: isOwn,
+        [styles.receivedContainer]: !isOwn,
+      })}
     >
       <div
-        className={`${styles.message} ${
-          isOwnMessage ? styles.sentMessage : styles.receivedMessage
-        }`}
+        className={clsx(styles.message, {
+          [styles.sentMessage]: isOwn,
+          [styles.receivedMessage]: !isOwn,
+        })}
       >
+        <div className={styles.header}>
+          <button
+            className={clsx(styles.button, {
+              [styles.sentQuoteButton]: isOwn,
+              [styles.receivedQuoteButton]: !isOwn,
+            })}
+            onClick={() => onQuote(message)}
+            aria-label="Цитировать"
+          ></button>
+        </div>
+
+        {message.quotedMessage && (
+          <div className={styles.quoted}>
+            <strong>{message.quotedMessage.user}:</strong>{" "}
+            {message.quotedMessage.text}
+          </div>
+        )}
+
         <div className={styles.text}>{message.text}</div>
+
         <div className={styles.footer}>
-          {!isOwnMessage && (
-            <span className={styles.username}>{message.user}</span>
-          )}
+          {!isOwn && <span className={styles.username}>{message.user}</span>}
           <span
-            className={`${
-              isOwnMessage ? styles.sentTimestamp : styles.receivedTimestamp
-            }`}
+            className={clsx({
+              [styles.sentTimestamp]: isOwn,
+              [styles.receivedTimestamp]: !isOwn,
+            })}
           >
             {formatTime(message.timestamp)}
           </span>

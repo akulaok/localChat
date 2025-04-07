@@ -6,9 +6,14 @@ import styles from "./MessageList.module.css";
 interface MessageListProps {
   messages: MessageType[];
   username: string;
+  onQuote: React.Dispatch<React.SetStateAction<MessageType | null>>;
 }
 
-function MessageList({username, messages}: MessageListProps): JSX.Element {
+function MessageList({
+  username,
+  messages,
+  onQuote,
+}: MessageListProps): JSX.Element {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -18,7 +23,7 @@ function MessageList({username, messages}: MessageListProps): JSX.Element {
   return (
     <div className={styles.messagesBox}>
       {messages.map((message) => (
-        <Message username={username} message={message}></Message>
+        <Message onQuote={onQuote } username={username} message={message}></Message>
       ))}
       <div ref={messagesEndRef} />
     </div>

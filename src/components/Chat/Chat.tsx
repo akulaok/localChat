@@ -1,4 +1,4 @@
-import {JSX} from "react";
+import {JSX, useState} from "react";
 import styles from "./Chat.module.css";
 import ChatHeader from "../ChatHeader/ChatHeader";
 import {MessageType} from "../../types/message";
@@ -13,6 +13,7 @@ interface ChatProps {
 
 function Chat({username, room}: ChatProps): JSX.Element {
   const {messages, setMessages} = useMessages(room);
+  const [quotedMessage, setQuotedMessage] = useState<MessageType | null>(null);
 
   const addMessage = (text: string) => {
     const newMsg: MessageType = {
@@ -21,16 +22,26 @@ function Chat({username, room}: ChatProps): JSX.Element {
       text,
       timestamp: new Date().toISOString(),
       room: room,
+      quotedMessage: quotedMessage,
     };
     setMessages((prev) => [...prev, newMsg]);
+    setQuotedMessage(null);
   };
 
   return (
     <main className={styles.main}>
       <ChatHeader username={username} room={room} />
       <div className={styles.ChatContainer}>
-        <ChatInput onSend={addMessage} />
-        <MessageList messages={messages} username={username} />
+        <ChatInput
+          onSend={addMessage}
+          quotedMessage={quotedMessage}
+          clearQuote={() => setQuotedMessage(null)}
+        />
+        <MessageList
+          messages={messages}
+          username={username}
+          onQuote={setQuotedMessage}
+        />
       </div>
     </main>
   );

@@ -4,4 +4,5 @@ export interface MessageType {
   text: string;
   timestamp: string;
   room: string;
+  quotedMessage: MessageType | null;
 }

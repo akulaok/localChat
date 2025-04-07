@@ -4,14 +4,45 @@
   height: 68px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  padding: 18px 16px;
+  padding: 0 16px;
   box-sizing: border-box;
+  gap: 12px;
+  background: #EEE2DC;
+}
+
+.quote {
+  max-width: 200px;
+  background: #f1c4d2;
+  padding: 8px 10px;
+  border-left: 4px solid #123C69;
+  border-radius: 8px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.quoteText {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.closeQuote {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
 }
 
 .input {
+  flex: 1;
   height: 100%;
-  width: calc(100% - 110px);
   background: #EEE2DC;
   border: none;
   box-sizing: border-box;
@@ -19,7 +50,7 @@
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  cursor: pointer;
+  padding: 0 12px;
 }
 
 .button {
@@ -34,7 +65,6 @@
 
 .button:hover {
   background-image: url(./button/send-hover.png);
-  outline: none;
 }
 
 .button:active {
