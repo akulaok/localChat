@@ -36,7 +36,7 @@ function ChatInput({
         setMessageText={setMessageText}
         handleSend={handleSend}
       />
-      <ChatInputMedia setMedia={setMedia} />
+      <ChatInputMedia setMedia={setMedia} attached={!!media} />
       <button className={styles.sendButton} onClick={handleSend}></button>
     </div>
   );

@@ -17,3 +17,13 @@
   background-color: transparent;
   background-image: url(./img/receivedQuoteButton.png);
 }
+
+.sentQuoteButton:hover {
+  background-color: transparent;
+  background-image: url(./img/receivedQuoteButton.png);
+}
+
+.receivedQuoteButton:hover {
+  background-color: transparent;
+  background-image: url(./img/sentQuoteButton.png);
+}
