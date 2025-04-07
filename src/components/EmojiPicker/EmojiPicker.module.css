@@ -1,0 +1,20 @@
+.wrapper {
+  position: relative;
+}
+
+.emojiBox {
+  position: absolute;
+  right: -49px;
+  bottom: 50px;
+  z-index: 10;
+}
+
+.button{
+  height: 29px;
+  width: 30px;
+  background-image: url(./smiley.png);
+  background-size: contain;
+  border: none;
+  background-color: #EEE2DC;
+  cursor: pointer;
+}
