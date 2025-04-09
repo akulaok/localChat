@@ -1,7 +1,7 @@
 import {JSX} from "react";
 import clsx from "clsx";
 import styles from "./MessageFooter.module.css";
-import { formatTime } from "../../../utils/formatTime";
+import {formatTime} from "../../../utils/formatTime";
 
 interface Props {
   isOwn: boolean;
