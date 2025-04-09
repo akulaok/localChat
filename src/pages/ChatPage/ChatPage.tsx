@@ -1,17 +1,17 @@
 import {JSX} from "react";
-import styles from "./Chat.module.css";
-import ChatHeader from "../ChatHeader/ChatHeader";
-import MessageList from "../MessageList/MessageList";
-import ChatInput from "../ChatInput/ChatInput";
+import styles from "./ChatPage.module.css";
+import ChatHeader from "../../components/Chat/ChatHeader/ChatHeader";
+import MessageList from "../../components/Message/MessageList/MessageList";
 import {useMessages} from "../../hooks/useMessages";
 import {useChatLogic} from "../../hooks/useChatLogic";
+import ChatInput from "../../components/Chat/ChatInput/ChatInput";
 
-interface ChatProps {
+interface ChatPageProps {
   username: string;
   room: string;
 }
 
-function Chat({username, room}: ChatProps): JSX.Element {
+function ChatPage({username, room}: ChatPageProps): JSX.Element {
   const {messages, setMessages} = useMessages(room);
 
   const {addMessage, quotedMessage, setQuotedMessage} = useChatLogic(
@@ -38,4 +38,4 @@ function Chat({username, room}: ChatProps): JSX.Element {
   );
 }
 
-export default Chat;
+export default ChatPage;

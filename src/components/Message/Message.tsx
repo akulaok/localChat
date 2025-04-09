@@ -1,7 +1,7 @@
 import {JSX} from "react";
 import {MessageType} from "../../types/message";
-import MessageContainer from "../MessageContainer/MessageContainer";
-import MessageBubble from "../MessageBubble/MessageBubble";
+import MessageContainer from "./MessageContainer/MessageContainer";
+import MessageBubble from "./MessageBubble/MessageBubble";
 
 interface Props {
   username: string;

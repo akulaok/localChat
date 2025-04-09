@@ -1,6 +1,6 @@
 import {JSX} from "react";
 import styles from "./QuotedBlock.module.css";
-import {MessageType} from "../../types/message";
+import {MessageType} from "../../../../types/message";
 
 interface Props {
   quoted: MessageType;

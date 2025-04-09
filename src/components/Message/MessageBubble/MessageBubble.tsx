@@ -1,9 +1,9 @@
 import {JSX} from "react";
 import styles from "./MessageBubble.module.css";
 import clsx from "clsx";
-import {MessageType} from "../../types/message";
-import QuoteButton from "../QuoteButton/QuoteButton";
-import QuotedBlock from "../QuotedBlock/QuotedBlock";
+import {MessageType} from "../../../types/message";
+import QuoteButton from "../Quote/QuoteButton/QuoteButton";
+import QuotedBlock from "../Quote/QuotedBlock/QuotedBlock";
 import MediaContent from "../MediaContent/MediaContent";
 import MessageFooter from "../MessageFooter/MessageFooter";
 

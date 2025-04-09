@@ -1,6 +1,6 @@
 import {JSX, useEffect, useRef} from "react";
-import {MessageType} from "../../types/message";
-import Message from "../Message/Message";
+import {MessageType} from "../../../types/message";
+import Message from "../Message";
 import styles from "./MessageList.module.css";
 
 interface MessageListProps {

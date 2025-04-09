@@ -1,14 +1,16 @@
 import {JSX, useState} from "react";
-import styles from "./Login.module.css";
+import styles from "./LoginPage.module.css";
+import {useNavigate} from "react-router-dom";
+import {AppRoute} from "../../consts";
 
-interface LoginProps {
+interface LoginPageProps {
   onLogin: (username: string, room: string) => void;
 }
 
-function Login({onLogin}: LoginProps): JSX.Element {
+function LoginPage({onLogin}: LoginPageProps): JSX.Element {
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
-
+  const navigate = useNavigate();
   const isUsernameTooLong = username.length > 30;
   const isRoomTooLong = room.length > 30;
 
@@ -16,6 +18,7 @@ function Login({onLogin}: LoginProps): JSX.Element {
     e.preventDefault();
     if (!isUsernameTooLong && !isRoomTooLong) {
       onLogin(username, room);
+      navigate(AppRoute.Chat);
     }
   };
 
@@ -55,4 +58,4 @@ function Login({onLogin}: LoginProps): JSX.Element {
   );
 }
 
-export default Login;
+export default LoginPage;
