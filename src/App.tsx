@@ -1,6 +1,4 @@
-import {useEffect, useState} from "react";
 import "./App.css";
-import {onLogin} from "./utils/authSrorage";
 import Chat from "./pages/ChatPage/ChatPage";
 import {
   BrowserRouter as Router,
@@ -10,35 +8,15 @@ import {
 } from "react-router-dom";
 import {AppRoute} from "./consts";
 import Login from "./pages/LoginPage/LoginPage";
+import {useSession} from "./hooks/useSession ";
 
 function App() {
-  const [username, setUsername] = useState<string | null>(null);
-  const [room, setRoom] = useState<string | null>(null);
-
-  useEffect(() => {
-    const savedSession = localStorage.getItem("chat-session");
-    if (savedSession) {
-      const parsed = JSON.parse(savedSession);
-      setUsername(parsed.username);
-      setRoom(parsed.room);
-    }
-  }, []);
-
-  console.log(username, room);
+  const {username, room, login} = useSession();
 
   return (
     <Router>
       <Routes>
-        <Route
-          path={AppRoute.Login}
-          element={
-            <Login
-              onLogin={(user, roomName) =>
-                onLogin(user, roomName, setUsername, setRoom)
-              }
-            />
-          }
-        />
+        <Route path={AppRoute.Login} element={<Login onLogin={login} />} />
         <Route
           path={AppRoute.Chat}
           element={
