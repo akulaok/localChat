@@ -1,27 +1,24 @@
-import {JSX} from "react";
+import {JSX, useContext} from "react";
 import styles from "./ChatPage.module.css";
 import ChatHeader from "../../components/Chat/ChatHeader/ChatHeader";
 import MessageList from "../../components/Message/MessageList/MessageList";
 import {useMessages} from "../../hooks/useMessages";
 import {useChatLogic} from "../../hooks/useChatLogic";
 import ChatInput from "../../components/Chat/ChatInput/ChatInput";
+import {StorageContext} from "../../contexts/StorageContext";
 
-interface ChatPageProps {
-  username: string;
-  room: string;
-}
-
-function ChatPage({username, room}: ChatPageProps): JSX.Element {
+function ChatPage(): JSX.Element {
+  const {userSession} = useContext(StorageContext);
+  const {userName, room} = userSession;
   const {messages, setMessages} = useMessages(room);
-
   const {addMessage, quotedMessage, setQuotedMessage} = useChatLogic(
-    username,
+    userName,
     room,
     setMessages
   );
   return (
     <main className={styles.main}>
-      <ChatHeader username={username} room={room} />
+      <ChatHeader />
       <div className={styles.ChatContainer}>
         <ChatInput
           onSend={addMessage}
@@ -30,7 +27,7 @@ function ChatPage({username, room}: ChatPageProps): JSX.Element {
         />
         <MessageList
           messages={messages}
-          username={username}
+          username={userName}
           onQuote={setQuotedMessage}
         />
       </div>

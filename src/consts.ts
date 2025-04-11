@@ -23,4 +23,6 @@ export const errorMessages = {
   allowSpaces: "Поле не должно содержать пробелы",
   maxLength: (max: number) => `Длина не должна превышать ${max} символов`,
   minLength: (min: number) => `Длина должна быть больше ${min} символов`,
-}
+};
+
+export const SESSION_KEY = "chat-session";

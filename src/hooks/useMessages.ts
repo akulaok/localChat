@@ -1,9 +1,12 @@
 import {useEffect, useState} from "react";
 import {MessageType} from "../types/message";
-import {loadMessages, sendMessage} from "../utils/messageStorage";
+import {LocalStorageService} from "../services/LocalStorageSessionService";
 
 export const useMessages = (room: string) => {
-  const [messages, setMessages] = useState<MessageType[]>(loadMessages(room));
+  const storageService = new LocalStorageService();
+  const [messages, setMessages] = useState<MessageType[]>(
+    storageService.loadMessages(room)
+  );
 
   useEffect(() => {
     const handleStorageChange = (e: StorageEvent) => {
@@ -17,7 +20,7 @@ export const useMessages = (room: string) => {
   }, [room]);
 
   useEffect(() => {
-    sendMessage(room, messages);
+    storageService.saveMessage(room, messages);
   }, [messages, room]);
 
   return {messages, setMessages};

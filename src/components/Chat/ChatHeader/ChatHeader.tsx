@@ -1,20 +1,15 @@
-import {JSX} from "react";
+import {JSX, useContext} from "react";
 import styles from "./ChatHeader.module.css";
-import {useSession} from "../../../hooks/useSession ";
+import {StorageContext} from "../../../contexts/StorageContext";
 
-interface ChatHeaderProps {
-  username: string;
-  room: string;
-}
-
-function ChatHeader({username, room}: ChatHeaderProps): JSX.Element {
-  const {logout} = useSession();
-
+function ChatHeader(): JSX.Element {
+  const {userSession} = useContext(StorageContext);
+  const {userName, room} = userSession;
   return (
     <header className={styles.header}>
-      <span className={styles.name}>{username}</span>
+      <span className={styles.name}>{userName}</span>
       <span>комната: {room}</span>
-      <button className={styles.button} onClick={logout}>
+      <button className={styles.button} onClick={() => userSession.logout()}>
         Выйти
       </button>
     </header>

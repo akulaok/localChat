@@ -1,15 +1,13 @@
-import {JSX, useState} from "react";
+import {JSX, useContext, useState} from "react";
 import styles from "./LoginPage.module.css";
 import {useNavigate} from "react-router-dom";
 import {AppRoute} from "../../consts";
 import AuthInput from "../../components/AuthInput/AuthInput";
 import {useValidation} from "../../hooks/useValidation";
+import {StorageContext} from "../../contexts/StorageContext";
 
-interface LoginPageProps {
-  onLogin: (username: string, room: string) => void;
-}
-
-function LoginPage({onLogin}: LoginPageProps): JSX.Element {
+function LoginPage(): JSX.Element {
+  const {userSession} = useContext(StorageContext);
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
   const navigate = useNavigate();
@@ -23,8 +21,7 @@ function LoginPage({onLogin}: LoginPageProps): JSX.Element {
     if (!isValid()) {
       return;
     }
-
-    onLogin(username, room);
+    userSession.login(username, room);
     navigate(AppRoute.Chat);
   };
 
